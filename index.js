@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 
 const token = '6479295458:AAFwnzAz92Ux7gYWFDKFIgpI5WabxLIuI3U'
-const webAppUrl = 'https://jocular-kitten-5df275.netlify.app'
+const webAppUrl = 'https://reacttelegram.netlify.app'
 
 const bot = new TelegramBot(token, { polling: true });
 const app = express()
@@ -16,11 +16,11 @@ bot.on('message', async (msg) => {
     const text = msg.text
 
     if(text === '/start') {
-        await bot.sendMessage(chatId, "Хочу ваши данные", {
+        await bot.sendMessage(chatId, "Не хотите купить вертолет?", {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: "Заполнить форму", web_app: {url: webAppUrl + '/form'}}],
-                    [{text: "В разработке...", web_app: {url: webAppUrl}}]
+                    [{text: "Оставить свою визитку", web_app: {url: webAppUrl + '/form'}}],
+                    [{text: "Посмотреть вертолеты", web_app: {url: webAppUrl}}]
                 ]
             }
         })
@@ -28,9 +28,7 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, "...", {
             reply_markup: {
                 keyboard: [
-                    [{text: "Заполнить форму", web_app: {url: webAppUrl + "/form"}}],
-                    [{text: "Нажать на кнопку"}],
-                    [{text: "Просто есть"}]
+                    [{text: "Свяжитесь", web_app: {url: webAppUrl + "/form"}}],
                 ]
             }
         })  
